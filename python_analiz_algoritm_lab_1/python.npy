@@ -1,0 +1,84 @@
+import numpy as np
+X = np.array([ [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], [1, 1, 2, 5, 3, 0, 5, 10, 1, 2] ])
+print(X)
+print(X.shape)
+
+y = [45, 55, 50, 55, 60, 35, 75, 80, 50, 60]
+y_pred1 = 35 * np.ones(10) + X[1]*5
+y_pred2 = 40 * np.ones(10) + X[1]*7.5
+print(y_pred1, y_pred2)
+err1 = np.sum(y - y_pred1)
+err2 = np.sum(y - y_pred2)
+print(err1, err2)
+mae_1 = np.sum(np.abs(y - y_pred1)) / 10
+mae_2 = np.sum(np.abs(y - y_pred2)) / 10
+print(mae_1, mae_2)
+mse_1 = np.mean((y - y_pred1) ** 2)
+mse_2 = np.mean((y - y_pred2) ** 2)
+print(mse_1, mse_2)
+print(X)
+print(X.shape)
+print(X.T)
+print(X.T.shape)
+print(all(X @ y == np.dot(X, y)))
+W = np.linalg.inv(np.dot(X, X.T)) @X @ y
+print(W)
+y_pred3 = W[0] * X[0] + W[1] * X[1]
+print(y_pred3)
+def calc_mae(y, y_pred):
+    err = np.mean(np.abs(y - y_pred))
+    return err
+
+def calc_mse(y, y_pred):
+    err = np.mean((y- y_pred) ** 2) # <=> 1/n * np.sum((y_pred - y) ** 2)
+    return err
+
+print(calc_mae(y, y_pred1), calc_mse(y, y_pred1))
+print(calc_mae(y, y_pred2), calc_mse(y, y_pred2))
+print(calc_mae(y, y_pred3), calc_mse(y, y_pred3))
+n = 10
+Q = 1/n * np.sum((y_pred3 - y) ** 2)
+alpha = 1e-2
+g = alpha * (1/n * 2 * np.sum(X[0] * (W[0] * X[0] - y)))
+print(W[0], W[0] - g)
+n = 20
+Q = 1/n * np.sum((y_pred3 - y) ** 2)
+alpha = 1e-2
+g = alpha * (1/n * 2 * np.sum(X[0] * (W[0] * X[0] - y)))
+print(W[0], W[0] - g)
+n = 30
+Q = 1/n * np.sum((y_pred3 - y) ** 2)
+alpha = 1e-2
+g = alpha * (1/n * 2 * np.sum(X[0] * (W[0] * X[0] - y)))
+print(W[0], W[0] - g)
+n = 40
+Q = 1/n * np.sum((y_pred3 - y) ** 2)
+alpha = 1e-2
+g = alpha * (1/n * 2 * np.sum(X[0] * (W[0] * X[0] - y)))
+print(W[0], W[0] - g)
+n = 50
+Q = 1/n * np.sum((y_pred3 - y) ** 2)
+alpha = 1e-2
+g = alpha * (1/n * 2 * np.sum(X[0] * (W[0] * X[0] - y)))
+print(W[0], W[0] - g)
+n = 60
+Q = 1/n * np.sum((y_pred3 - y) ** 2)
+alpha = 1e-2
+g = alpha * (1/n * 2 * np.sum(X[0] * (W[0] * X[0] - y)))
+print(W[0], W[0] - g)
+n = 70
+Q = 1/n * np.sum((y_pred3 - y) ** 2)
+alpha = 1e-2
+g = alpha * (1/n * 2 * np.sum(X[0] * (W[0] * X[0] - y)))
+print(W[0], W[0] - g)
+n = 80
+Q = 1/n * np.sum((y_pred3 - y) ** 2)
+alpha = 1e-2
+g = alpha * (1/n * 2 * np.sum(X[0] * (W[0] * X[0] - y)))
+print(W[0], W[0] - g)
+n = 90
+Q = 1/n * np.sum((y_pred3 - y) ** 2)
+alpha = 1e-2
+g = alpha * (1/n * 2 * np.sum(X[0] * (W[0] * X[0] - y)))
+print(W[0], W[0] - g)
+
